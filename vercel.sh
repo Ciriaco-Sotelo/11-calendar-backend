@@ -1,9 +1,9 @@
 #!/bin/bash
  
-if [[ $VERCEL_GIT_COMMIT_REF == "main"  ]] ; then 
+if [[ $VERCEL_ENV == "production"  ]] ; then 
   echo "This is our main branch"
-  npm start
+  npm run build:production
 else 
   echo "This is not our main branch"
-  npm run dev
+  npm run build:preview
 fi
