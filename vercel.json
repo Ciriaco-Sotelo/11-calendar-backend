@@ -1,6 +1,5 @@
 {
     "version": 2,
-    "buildCommand": "sh vercel.sh",
     "builds": [
         {
             "src": "index.js",
