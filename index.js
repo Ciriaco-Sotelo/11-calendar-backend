@@ -2,6 +2,7 @@ const express = require('express');
 require('dotenv').config();
 const cors = require('cors');
 const { dbConnection } = require('./database/config');
+const path = require('path');
 
 // console.log(process.env)
 
@@ -25,8 +26,9 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/events', require('./routes/events'));
 
 // 8 Rutas en front
-app.get('*', (req, res) => {
-    res.sendFile( __dirname + '/public/index.html' );
+app.use(express.static(path.join(__dirname, 'public')));
+app.get('/*', (req, res) => {
+    res.sendFile( path.join(__dirname, 'public', 'index.html') );
 })
 
 // #2 Escuchar peticiones
